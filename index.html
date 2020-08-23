@@ -2,75 +2,43 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <title>Zack Umar | Home</title>
-        <link rel="icon" href="assets/images/favicon.png" />
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
-
-        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-        <script defer src="js/navbar.js"></script>
+        <title>My first three.js app</title>
+        <style>
+            body {
+                margin: 0;
+            }
+            canvas {
+                display: block;
+            }
+        </style>
     </head>
     <body>
-        <section class="hero is-primary is-large is-bold">
-            <div class="hero-head">
-                <nav class="navbar is-fixed-top" role="navigation" aria-label="main naviagation">
-                    <div class="navbar-brand">
-                        <a class="navbar-item" href="https://zackumar.github.io">
-                            <img src="assets/images/favicon.png" height="500" style="border-radius: 50%;" />
-                            <p class="ml-3 is-size-5">Zack Umar</p>
-                        </a>
+        <script src="js/three.js"></script>
+        <script>
+            // Our Javascript will go here.
+            var scene = new THREE.Scene()
+            var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
 
-                        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                        </a>
-                    </div>
+            var renderer = new THREE.WebGLRenderer()
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            document.body.appendChild(renderer.domElement)
 
-                    <div id="navbarMain" class="navbar-menu">
-                        <div class="navbar-end mr-3">
-                            <a class="navbar-item">
-                                Home
-                            </a>
-                            <a class="navbar-item">
-                                About
-                            </a>
-                            <a class="navbar-item">
-                                Projects
-                            </a>
+            var geometry = new THREE.BoxGeometry()
+            var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+            var cube = new THREE.Mesh(geometry, material)
+            scene.add(cube)
 
-                            <div class="mx-3"></div>
+            camera.position.z = 5
 
-                            <a class="navbar-item is-size-5" href="https://github.com/zackumar">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a class="navbar-item is-size-5" href="https://twitter.com/mcgoodmen">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a class="navbar-item is-size-5" href="https://www.instagram.com/mcgoodmen/">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title is-size-1">
-                        Hello World!
-                    </h1>
-                    <h2 class="subtitle">
-                        I'm Zack Umar.
-                    </h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ornare ligula id ligula euismod, sed posuere justo hendrerit. Cras tincidunt sapien eu iaculis sagittis.
-                        Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus id dolor vestibulum, lobortis sapien eu, dignissim orci. Curabitur tristique semper turpis et eleifend.
-                        Vivamus convallis quam ut odio varius, non auctor magna accumsan. Praesent non ipsum id ex volutpat tempus at ut augue.
-                    </p>
-                </div>
-            </div>
-        </section>
+            function animate() {
+                requestAnimationFrame(animate)
+                renderer.render(scene, camera)
+
+                cube.rotation.x += 0.01
+                cube.rotation.y += 0.01
+                camera.position.z += 0.01
+            }
+            animate()
+        </script>
     </body>
 </html>
