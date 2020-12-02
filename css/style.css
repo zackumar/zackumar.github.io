@@ -1,0 +1,44 @@
+body {
+    color: #333;
+    /* font-size: 1vh; */
+    font-size: 1.1rem;
+}
+
+pre {
+    overflow-x: auto;
+    position: absolute;
+    padding: 10px;
+    line-height: 18px;
+    white-space: pre-wrap;
+}
+/* 
+.keyword {
+    color: #996ddd;
+}
+
+.name {
+    color: #e5b458;
+}
+
+.key {
+    color: #e04a56;
+}
+*/
+
+.value {
+    /* color: #080; */
+    color: #e04a56;
+}
+
+a {
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    /* border-bottom: 1px solid #080; */
+    border-bottom: 1px solid #e04a56;
+}
+
+.item {
+    line-height: 20px;
+}
