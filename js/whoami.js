@@ -2,7 +2,7 @@ const mail = 'moc.liamg/2ramukcaz'.split('').reverse().join('').replace('/', '@'
 
 let whoami = {
     name: 'Zack Umar',
-    description: "Student at working towards a Bachelor\\'s degree in CS",
+    description: "Student working towards a Bachelor\\'s degree in CS",
     eductation: [
         {
             school: 'University of Texas at San Antonio',

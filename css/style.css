@@ -1,5 +1,26 @@
+:root {
+    /* --background: #fff;
+    --text-color: #003049;
+
+    --keyword-color: #480ca8;
+    --name-color: #f77f00;
+    --key-color: #f72585;
+    --value-color: #4361ee; */
+
+    --background: #282c34;
+    --text-color: #c678dd;
+
+    --keyword-color: #c678dd;
+    --name-color: #ffd700;
+    --equals-color: #61afef;
+
+    --key-color: #e06c75;
+    --value-color: #98c379;
+}
+
 body {
-    color: #003049;
+    background-color: var(--background);
+    color: var(--text-color);
     font-size: 1.1rem;
 }
 
@@ -9,22 +30,27 @@ pre {
     line-height: 20px;
     white-space: pre-wrap;
     font-family: monospace;
-}
-
-.name {
-    color: #f77f00;
+    /* font-family: 'Iowan Old Style'; */
 }
 
 .keyword {
-    color: #480ca8;
+    color: var(--keyword-color);
+}
+
+.name {
+    color: var(--name-color);
+}
+
+.equals {
+    color: var(--equals-color);
 }
 
 .key {
-    color: #f72585;
+    color: var(--key-color);
 }
 
 .value {
-    color: #4361ee;
+    color: var(--value-color);
 }
 
 a {
@@ -32,7 +58,7 @@ a {
     cursor: pointer;
     color: inherit;
     text-decoration: none;
-    border-bottom: 1px solid #4361ee;
+    border-bottom: 1px solid var(--value-color);
 }
 
 .item {
