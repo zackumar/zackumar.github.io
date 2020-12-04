@@ -78,7 +78,7 @@ function getTab(spaces) {
 function load(obj, spacing, isArrSingleLine) {
     let pre = document.createElement('pre')
     pre.id = 'content'
-    pre.innerHTML = '<span class="keyword">let</span> <span class="name">whoami</span> = ' + objectToJSON(obj, 2, isArrSingleLine)
+    pre.innerHTML = '<span class="keyword">let</span> <span class="name">whoami</span> <span class="equals">=</span> ' + objectToJSON(obj, 2, isArrSingleLine)
     document.body.innerHTML = pre.outerHTML
 
     pre = document.getElementById('content')
