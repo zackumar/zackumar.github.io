@@ -5,9 +5,14 @@ const isArrSingleLine = false
 const consoleMessage = `---------------------------------
 🖐️ HELLO! Strange seeing ya here. 
 ---------------------------------
-If you wanna edit the whoami,
-you can edit 'whoami' variable
-and use the load() function.
+If you wanna edit whoami,
+you can edit the 'whoami' 
+variable and use the load() 
+function.
+
+load() takes in an object,
+tab width, and if you want to
+display arrays on a single line.
 
 There is a reason it isn't a
 constant 😁.
@@ -78,7 +83,7 @@ function getTab(spaces) {
 function load(obj, spacing, isArrSingleLine) {
     let pre = document.createElement('pre')
     pre.id = 'content'
-    pre.innerHTML = '<span class="keyword">let</span> <span class="name">whoami</span> <span class="equals">=</span> ' + objectToJSON(obj, 2, isArrSingleLine)
+    pre.innerHTML = '<span class="keyword">let</span> <span class="name">whoami</span> <span class="equals">=</span> ' + objectToJSON(obj, spacing, isArrSingleLine)
     document.body.innerHTML = pre.outerHTML
 
     pre = document.getElementById('content')
