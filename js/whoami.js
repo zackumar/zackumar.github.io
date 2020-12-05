@@ -11,6 +11,7 @@ let whoami = {
             current_gpa: '4.0',
         },
     ],
+    my_thoughts: '<a class="item" href="./blog.html">My Thoughts</a>',
     projects: ['<a class="item" href="https://github.com/zackumar/Belnades">belnades</a>', '<a href="https://github.com/zackumar">more on github...</a>'],
     contact: [`<a class="item" href="${mail}">${mail}</a>`, '<a class="item" href="https://www.linkedin.com/in/zackumar/">linkedin</a>'],
     other_links: ['<a class="item" href="https://github.com/zackumar">github</a>', '<a class="item" href="https://twitter.com/mcgoodmen">twitter</a>'],
