@@ -8,12 +8,28 @@ let whoami = {
             school: 'University of Texas at San Antonio',
             major: 'Computer Science',
             expected_graduation: 'May 2024',
-            current_gpa: '4.0',
+            current_gpa: '3.92',
         },
     ],
-    projects: ['<a class="item" href="https://github.com/zackumar/Belnades">belnades</a>', '<a href="https://github.com/zackumar">more on github...</a>'],
-    contact: [`<a class="item" href="${mail}">${mail}</a>`, '<a class="item" href="https://www.linkedin.com/in/zackumar/">linkedin</a>'],
-    other_links: ['<a class="item" href="https://github.com/zackumar">github</a>', '<a class="item" href="https://twitter.com/mcgoodmen">twitter</a>'],
+    // my_thoughts: getLink('./blog.html', 'My Thoughts'),
+    projects: [
+        {
+            project_name: '@newpaper_snippets',
+            description:
+                'An Instagram "bot" that posts snippets (advertisements, pictures, menus) from newspapers from exactly 100 years ago!\nCredit to the Library of Congress for archiving the papers!',
+            instagram: getLink('https://www.instagram.com/newspaper_snippets/', '@newspaper_snippets'),
+            github: getLink('https://github.com/zackumar/newspaper_snippets'),
+        },
+        getLink('https://github.com/zackumar/Belnades', 'belnades'),
+        getLink('https://github.com/zackumar/txconnect-api', 'txconnect-api'),
+        getLink('https://github.com/zackumar', 'more on github...'),
+    ],
+    contact: [getLink(mail, mail), getLink('https://www.linkedin.com/in/zackumar/', 'linkedin')],
+    other_links: [getLink('https://github.com/zackumar', 'github'), getLink('https://twitter.com/mcgoodmen', 'twitter')],
+}
+
+function getLink(url, textToDisplay) {
+    return `<a class="item" href="${url}">${textToDisplay ? textToDisplay : url}</a>`
 }
 
 let test = {

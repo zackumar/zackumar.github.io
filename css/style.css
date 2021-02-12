@@ -7,7 +7,7 @@
     --key-color: #f72585;
     --value-color: #4361ee; */
 
-    --background: #282c34;
+    /* --background: #282c34;
     --text-color: #c678dd;
 
     --keyword-color: #c678dd;
@@ -15,7 +15,20 @@
     --equals-color: #61afef;
 
     --key-color: #e06c75;
-    --value-color: #98c379;
+    --value-color: #98c379; */
+
+    --background: #fffffc;
+    --text-color: #073b4c;
+
+    --keyword-color: #81b29a;
+    --name-color: #ef476f;
+    --equals-color: #118ab2;
+
+    --key-color: #ef476f;
+    --value-color: #118ab2;
+
+    --font-family: monospace;
+    --line-height: 20px;
 }
 
 body {
@@ -27,10 +40,10 @@ body {
 pre {
     position: absolute;
     padding: 10px;
-    line-height: 20px;
+    line-height: var(--line-height);
     white-space: pre-wrap;
-    font-family: monospace;
-    /* font-family: 'Iowan Old Style'; */
+    /* font-family: monospace; */
+    font-family: var(--font-family);
 }
 
 .keyword {
