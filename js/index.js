@@ -33,12 +33,11 @@ function objectToJSON(obj, space, isArrSingleLine) {
     if (!space) space = 4
     if (!isArrSingleLine) isArrSingleLine = false
 
-    return objectToJsonRecursive(obj, space, space, 0, isArrSingleLine)
+    return objectToJsonRecursive(obj, space, 0, isArrSingleLine)
 }
 
 //Recursive function for objectToJson (Not the most effecient thing. But it works and it's fast)
-//FIXME: ADD isOnSingleLine AND REMOVE newSpacing. (OBSOLETE BUT EFFECTS STUFF WHEN REMOVED?)
-function objectToJsonRecursive(obj, spacing, newSpacing, depth, isOnSingleLine) {
+function objectToJsonRecursive(obj, spacing, depth, isOnSingleLine) {
     let value = []
 
     let defaultTab = getTab(spacing * (depth + 1))
@@ -56,13 +55,13 @@ function objectToJsonRecursive(obj, spacing, newSpacing, depth, isOnSingleLine) 
             if (Array.isArray(obj)) {
                 value.push(`[`)
                 obj.forEach((e) => {
-                    value.push(`${defaultTab}${objectToJsonRecursive(e, spacing, null, depth + 1, isOnSingleLine)},`)
+                    value.push(`${defaultTab}${objectToJsonRecursive(e, spacing, depth + 1, isOnSingleLine)},`)
                 })
                 value.push(`${bracketTab}]`)
             } else {
                 value.push(`{`)
                 Object.keys(obj).forEach((key) => {
-                    value.push(`${defaultTab}<span class="key">${key}</span>: ${objectToJsonRecursive(obj[key], spacing, null, depth + 1, isOnSingleLine)},`)
+                    value.push(`${defaultTab}<span class="key">${key}</span>: ${objectToJsonRecursive(obj[key], spacing, depth + 1, isOnSingleLine)},`)
                 })
                 value.push(`${bracketTab}}`)
             }
