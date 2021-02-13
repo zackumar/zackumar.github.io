@@ -1,10 +1,15 @@
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
 function getQueryParams() {
     let queryString = {}
-    $(window.location.search.substr(1).split('&')).each((i, e) => {
-        if (e === '') return
-        let pair = e.split('=')
-        queryString[pair[0]] = pair[1] && decodeURIComponent(pair[1].replace(/\+/g, ' '))
-    })
+    window.location.search
+        .substr(1)
+        .split('&')
+        .forEach((e) => {
+            if (e === '') return
+            let pair = e.split('=')
+            queryString[pair[0]] = pair[1] && decodeURIComponent(pair[1].replace(/\+/g, ' '))
+        })
 
     return queryString
 }
@@ -52,11 +57,21 @@ async function loadMainPost(postInfo, queryParams) {
 }
 
 function categorizePosts(postInfo) {
-    let categories = {}
+    let categories = {
+        years: [],
+    }
 
-    $(postInfo).each((i, e) => {
-        if (!categories[e.date.getFullYear()]) categories[e.date.getFullYear()] = {}
-        if (!categories[e.date.getFullYear()][e.date.getMonth()]) categories[e.date.getFullYear()][e.date.getMonth()] = []
+    postInfo.forEach((e) => {
+        if (!categories[e.date.getFullYear()]) {
+            categories['years'].push(e.date.getFullYear())
+            categories[e.date.getFullYear()] = {
+                months: [],
+            }
+        }
+        if (!categories[e.date.getFullYear()][e.date.getMonth()]) {
+            categories[e.date.getFullYear()]['months'].push(e.date.getMonth())
+            categories[e.date.getFullYear()][e.date.getMonth()] = []
+        }
         categories[e.date.getFullYear()][e.date.getMonth()].push(e)
     })
 
@@ -69,15 +84,33 @@ function categorizePosts(postInfo) {
 
     await loadMainPost(postInfo, queryParams)
 
-    let now = new Date()
-    $('h3#currentmonthtitle').html(`${now.toLocaleString('default', { month: 'long' })}'s Entries`)
+    postInfo = categorizePosts(postInfo)
 
-    $(postInfo).each((i, e) => {
-        if (e.date.getFullYear() === now.getFullYear() && e.date.getMonth() === now.getMonth()) {
-            let href = `<a href="?title=${e.title}"> <p>${e.title}</p><hr><time>${e.date.getDate()}</time></a>`
-            $('div#currentmonthentries').append(href)
-        }
+    monthNames[postInfo[postInfo.years.slice().reverse()[0]].months.slice().reverse()[0]]
+
+    let mostRecentYear = postInfo.years[postInfo.years.length - 1]
+    let mostRecentMonth = postInfo[mostRecentYear].months[postInfo[mostRecentYear].months.length - 1]
+
+    let recentMonthsDiv = $('div#recentmonthentries')
+    $('h3#recentmonthtitle').html(`${monthNames[mostRecentMonth]}'s Entries`)
+
+    postInfo[mostRecentYear][mostRecentMonth].forEach((e) => {
+        let href = `<a href="?title=${e.title}"><p>${e.title}</p><hr><time>${e.date.getDate()}</time></a>`
+        recentMonthsDiv.append(href)
     })
 
-    console.log(categorizePosts(postInfo))
+    let detailsDiv = $('details')
+
+    postInfo.years.reverse().forEach((year) => {
+        postInfo[year].months.reverse().forEach((month, i) => {
+            detailsDiv.append(i !== 0 ? `<h3><time>${monthNames[month]}</time></h3>` : `<h3><time>${year}</time><time>${monthNames[month]}</time></h3>`)
+            postInfo[year][month].forEach((post) => {
+                detailsDiv.append(`<a href="?title=${post.title}"><p>${post.title}</p><hr><time>${post.date.getDate()}</time></a>`)
+            })
+        })
+    })
+
+    console.log(postInfo)
+    console.log(mostRecentYear)
+    console.log(mostRecentMonth)
 })()
