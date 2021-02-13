@@ -18,18 +18,14 @@ async function getPostInfo() {
     let postsFilesHrefs = []
 
     try {
-        await $.get('./blog', (data) => {
-            $(data)
-                .find('ul[id="files"] > li > a')
-                .each((i, e) => {
-                    let element = $(e)
-                    if (element.attr('href') === '/') return
-                    postsFilesHrefs.push({
-                        title: element.attr('title').slice(20, -3).replace(/-/g, ' '),
-                        href: element.attr('href'),
-                        date: new Date(element.attr('title').slice(0, 19).replace(/_/g, ':')),
-                    })
+        await $.getJSON('./blog/index.json', (data) => {
+            data.entries.forEach((e) => {
+                postsFilesHrefs.push({
+                    title: e.slice(20, -3).replace(/-/g, ' '),
+                    href: `./blog/${e}`,
+                    date: new Date(e.slice(0, 19).replace(/_/g, ':')),
                 })
+            })
         })
     } catch (e) {
         console.error(e)
