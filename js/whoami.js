@@ -11,7 +11,7 @@ let whoami = {
             current_gpa: '3.92',
         },
     ],
-    // my_thoughts: getLink('./blog.html', 'My Thoughts'),
+    my_thoughts: getLink('./blog.html', 'My Thoughts'),
     projects: [
         {
             project_name: '@newpaper_snippets',
