@@ -38,8 +38,9 @@ body {
 }
 
 pre {
+    padding: 2rem 1.5rem 1.5rem 2rem;
+
     position: absolute;
-    padding: 10px;
     line-height: var(--line-height);
     white-space: pre-wrap;
     /* font-family: monospace; */
