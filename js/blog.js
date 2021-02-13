@@ -91,13 +91,16 @@ function categorizePosts(postInfo) {
     let mostRecentYear = postInfo.years[postInfo.years.length - 1]
     let mostRecentMonth = postInfo[mostRecentYear].months[postInfo[mostRecentYear].months.length - 1]
 
-    let recentMonthsDiv = $('div#recentmonthentries')
+    let recentMonthTitle = $('h3#recentmonthtitle')
     $('h3#recentmonthtitle').html(`${monthNames[mostRecentMonth]}'s Entries`)
+    let href = ''
 
     postInfo[mostRecentYear][mostRecentMonth].forEach((e) => {
-        let href = `<a href="?title=${e.title}"><p>${e.title}</p><hr><time>${e.date.getDate()}</time></a>`
-        recentMonthsDiv.append(href)
+        href = `${href}<a class="current" href="?title=${e.title}"><p>${e.title}</p><hr><time>${e.date.getDate()}</time></a>`
     })
+
+    recentMonthTitle.after(href)
+    postInfo[mostRecentYear].months.pop()
 
     let detailsDiv = $('details')
 
@@ -109,8 +112,4 @@ function categorizePosts(postInfo) {
             })
         })
     })
-
-    console.log(postInfo)
-    console.log(mostRecentYear)
-    console.log(mostRecentMonth)
 })()
