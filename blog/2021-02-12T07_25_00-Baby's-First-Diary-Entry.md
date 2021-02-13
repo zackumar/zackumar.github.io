@@ -2,7 +2,7 @@
 
 Why hello there 👋. Welcome!
 
-This is my first blog post! Wait no--blog post sounds to... old school 😗. So maybe... diary entry? Sure. I'll go with that. It has a fun touch to it that 'blog post' doesn't have. Captin’s Log: Entry 1. No. I’ll stick with ‘diary entry’.
+This is my first blog post! Wait no--blog post sounds to... old school 😗. So maybe... diary entry? Sure. I'll go with that. It has a fun touch to it that 'blog post' doesn't have. **OR!** Captin’s Log: Entry 1. No. I’ll stick with ‘diary entry’.
 
 First off, I don't expect anyone to really read this, but hey, one can only hope. This, along with all my other projects, is really supposed to be a side thing that I thought was kinda fun to put together. If you look at the source code of this website, you shall see that it is very crudely put together with no real organization at all. But it was more of a one-day build, so I'm going to give it some slack--sorry though. It was fun putting this together as it allowed me to learn all the things for full-stack development, along with markdown! Markdown is always a fun thing to use. It's just so simple.
 
