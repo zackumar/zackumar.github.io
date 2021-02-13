@@ -78,6 +78,20 @@ function categorizePosts(postInfo) {
     return categories
 }
 
+function getSuffix(d) {
+    if (d > 3 && d < 21) return 'th'
+    switch (d % 10) {
+        case 1:
+            return 'st'
+        case 2:
+            return 'nd'
+        case 3:
+            return 'rd'
+        default:
+            return 'th'
+    }
+}
+
 ;(async () => {
     let postInfo = await getPostInfo()
     let queryParams = getQueryParams()
@@ -96,7 +110,7 @@ function categorizePosts(postInfo) {
     let href = ''
 
     postInfo[mostRecentYear][mostRecentMonth].forEach((e) => {
-        href = `${href}<a class="current" href="?title=${e.title}"><p>${e.title}</p><hr><time>${e.date.getDate()}</time></a>`
+        href = `${href}<a class="current" href="?title=${e.title}"><p>${e.title}</p><hr><time>${e.date.getDate()}${getSuffix(e.date.getDate())}</time></a>`
     })
 
     recentMonthTitle.after(href)
@@ -108,7 +122,7 @@ function categorizePosts(postInfo) {
         postInfo[year].months.reverse().forEach((month, i) => {
             detailsDiv.append(i !== 0 ? `<h3><time>${monthNames[month]}</time></h3>` : `<h3><time>${year}</time><time>${monthNames[month]}</time></h3>`)
             postInfo[year][month].forEach((post) => {
-                detailsDiv.append(`<a href="?title=${post.title}"><p>${post.title}</p><hr><time>${post.date.getDate()}</time></a>`)
+                detailsDiv.append(`<a href="?title=${post.title}"><p>${post.title}</p><hr><time>${post.date.getDate()}${getSuffix(post.date.getDate())}</time></a>`)
             })
         })
     })
