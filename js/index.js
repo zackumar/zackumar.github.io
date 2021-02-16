@@ -83,10 +83,10 @@ function load(obj, spacing, isArrSingleLine) {
     let pre = document.createElement('pre')
     pre.id = 'content'
     pre.innerHTML = '<span class="keyword">let</span> <span class="name">whoami</span> <span class="equals">=</span> ' + objectToJSON(obj, spacing, isArrSingleLine)
-    document.body.innerHTML = pre.outerHTML
+    document.getElementById('main').innerHTML = pre.outerHTML
 
     pre = document.getElementById('content')
 
-    pre.style.top = `${window.innerHeight / 2 - pre.offsetHeight / 2 - 20}px`
+    // pre.style.top = `${window.innerHeight / 2 - pre.offsetHeight / 2 - 20}px`
     pre.style.left = `${window.innerWidth / 2 - pre.offsetWidth / 2}px`
 }

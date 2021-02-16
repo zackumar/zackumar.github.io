@@ -38,12 +38,10 @@ body {
 }
 
 pre {
-    padding: 2rem 1.5rem 1.5rem 2rem;
-
+    padding: 2.5rem 3rem 2.5rem 3rem;
     position: absolute;
     line-height: var(--line-height);
     white-space: pre-wrap;
-    /* font-family: monospace; */
     font-family: var(--font-family);
 }
 
