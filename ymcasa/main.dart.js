@@ -59895,7 +59895,7 @@ s.c=new B.Qr(!1)
 p.sIX(0,"application/x-www-form-urlencoded")
 q=s.b
 p=q.ft$
-p.cx="http://24.160.14.106:3600/"
+p.cx="https://24.160.14.106:3600/"
 p.db=3e4
 p.d=3000
 p.y=!1
